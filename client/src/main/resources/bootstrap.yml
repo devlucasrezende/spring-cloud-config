@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8080
+      label: latest
+    bus:
+      enabled: true
+  application:
+    name: spring-cloud-config-client
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

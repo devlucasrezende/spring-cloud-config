@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    include: jdbc
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT PROP_KEY, VALUE from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+    bus:
+      enabled: true
+  application:
+    name: server
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    username: admin
+    url: jdbc:postgresql://localhost:5432/postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
